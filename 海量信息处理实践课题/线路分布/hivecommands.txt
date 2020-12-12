@@ -1,0 +1,18 @@
+beeline -u jdbc:hive2://course-cluster-namenode-0:10000/default -n stu2017210017 -p 210017;
+#创建数据库
+create database logistics;
+use logistics;
+#创建地址数据表
+create table address_A(`ID` string, `yundanID` string, type string, province string, city string, district string, `gpsX` double, `gpsY` double, `mainNode` int, sequence int) row format delimited fields terminated by ',';
+#创建运单数据表
+create table waybill_A(`ID` string, `yundanBianhao` string, `pickupTime` string, `arrivalTime` string, fang double, ton double, `truckID` string) row format delimited fields terminated by ',';
+#加载地址数据到表格
+load data inpath '/user/stu2017210017/data/address_A.txt' overwrite into table address_A;
+#加载运单数据到表格
+load data inpath '/user/stu2017210017/data/waybill_A.txt' overwrite into table waybill_A;
+#从运单数据表查询出客户所有运单ID
+SELECT DISTINCT ID FROM waybill_A;
+#利用已经得到的运单ID集合，将每一个运单ID替换下面语句的{}处，查询每个运单采用的路线
+SELECT type, province, city FROM address_A WHERE yundanID = {};
+#使用python数据处理，得到以运单ID为key，路线为value的键值对
+

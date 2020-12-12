@@ -1,0 +1,48 @@
+create 'analysis_result', 'raw_info', 'score', 'rank'
+put 'analysis_result', 'route1', 'raw_info:track', 'Xianyang, Shaanxi(Load)->Xi\'an, Shaanxi(Unload)->Xining, Qinghai(Unload)->Ankang, Shaanxi(Unload)' 
+put 'analysis_result', 'route1', 'raw_info:waybills', 1
+put 'analysis_result', 'route1', 'raw_info:distance', 1817
+put 'analysis_result', 'route1', 'raw_info:weightDistance', 144375
+put 'analysis_result', 'route1', 'score:hot', 0.0326
+put 'analysis_result', 'route1', 'score:short', 0.2192
+put 'analysis_result', 'route1', 'score:cost', 0.0628
+put 'analysis_result', 'route1', 'score:total_score', 0.1037
+put 'analysis_result', 'route1', 'rank:Realrank', 4
+put 'analysis_result', 'route1', 'rank:star', 1
+a = get_table 'analysis_result'
+a.put 'route2', 'raw_info:track', 'Xianyang, Shaanxi(Load)->Xi\'an, Shaanxi(Unload)->Ankang, Shaanxi(Unload)->Xining, Qinghai(Unload)'
+a.put 'route2', 'raw_info:waybills', 0
+a.put 'route2', 'raw_info:distance', 1144
+a.put 'route2', 'raw_info:weightDistance', 58201.5
+a.put 'route2', 'score:hot', 0.0166
+a.put 'route2', 'score:short', 0.8718
+a.put 'route2', 'score:cost', 0.8552
+a.put 'route2', 'score:total_score', 0.6925
+a.put 'route2', 'rank:Realrank', 1
+a.put 'route2', 'rank:star', 4
+
+a.put 'route3', 'raw_info:track', 'Xianyang, Shaanxi(Load)->Ankang, Shaanxi(Unload)->Xi\'an, Shaanxi(Unload)->Xining, Qinghai(Unload)'
+a.put 'route3', 'raw_info:waybills', 0
+a.put 'route3', 'raw_info:distance', 1236
+a.put 'route3', 'raw_info:weightDistance', 69138.1
+a.put 'route3', 'score:hot', 0.0166
+a.put 'route3', 'score:short', 0.8145
+a.put 'route3', 'score:cost', 0.7699
+a.put 'route3', 'score:total_score', 0.6326
+a.put 'route3', 'rank:Realrank', 2
+a.put 'route3', 'rank:star', 4
+
+a.put 'route4', 'raw_info:track', 'Xianyang, Shaanxi(Load)->Ankang, Shaanxi(Unload)->Xining, Qinghai(Unload)->Xi\'an, Shaanxi(Unload)'
+a.put 'route4', 'raw_info:waybills', 0
+a.put 'route4', 'raw_info:distance', 1998
+a.put 'route4', 'raw_info:weightDistance', 97752.4
+a.put 'route4', 'score:hot', 0.0166
+a.put 'route4', 'score:short', 0.1065
+a.put 'route4', 'score:cost', 0.4305
+a.put 'route4', 'score:total_score', 0.2505
+a.put 'route4', 'rank:Realrank', 3
+a.put 'route4', 'rank:star', 2
+
+scan 'analysis_result'
+get 'analysis_result', 'route2', {COLUMN=>'score'}
+get 'analysis_result', 'route3'
